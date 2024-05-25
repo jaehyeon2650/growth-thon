@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI 디자인</title>
+    <link rel="stylesheet" href="../css/page2.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="icon">
+        <img src="../pig.png" alt="아이콘" />
+      </div>
+      <div class="input-container">
+        <input
+          type="file"
+          id="file-upload"
+          class="file-input"
+          multiple
+          onchange="displayFileNames()"
+        />
+        <label for="file-upload" class="file-input-label"
+          >영수증 관련 사진들을 첨부하세요.</label
+        >
+        <div id="file-list" class="file-list"></div>
+      </div>
+      <div class="checkbox-container">
+        <p>내역 정리할 항목을 고르세요</p>
+        <div class="checkbox-group">
+          <label class="custom-checkbox">
+            <input type="checkbox" class="checkbox-input" />
+            <span class="checkbox-label">가격</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" class="checkbox-input" />
+            <span class="checkbox-label">날짜</span>
+          </label>
+          <label class="custom-checkbox">
+            <input type="checkbox" class="checkbox-input" />
+            <span class="checkbox-label">사용한 곳</span>
+          </label>
+        </div>
+      </div>
+      <div class="input-container">
+        <button id="next-button">다음</button>
+      </div>
+    </div>
+    <script src="../js/page2.js"></script>
+  </body>
+</html>
