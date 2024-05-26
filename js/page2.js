@@ -21,15 +21,64 @@ document.getElementById("next-button").addEventListener("click", function () {
   }
 });
 
+const fileInput = document.querySelector(".input-container input");
+fileInput.addEventListener("change", displayFileNames);
 function displayFileNames() {
   const input = document.getElementById("file-upload");
   const fileList = document.getElementById("file-list");
+  const filesArray = Array.from(input.files);
   fileList.innerHTML = "";
 
-  for (let i = 0; i < input.files.length; i++) {
-    const file = input.files[i];
+  filesArray.forEach((file, index) => {
+    const fileItem = document.createElement("div");
+    fileItem.className = "file-item";
+
     const fileName = document.createElement("p");
     fileName.textContent = file.name;
-    fileList.appendChild(fileName);
-  }
+
+    const removeButton = document.createElement("button");
+    removeButton.className = "remove-btn";
+    removeButton.textContent = "❌";
+    removeButton.onclick = function () {
+      filesArray.splice(index, 1);
+      updateFileList(filesArray);
+    };
+
+    fileItem.appendChild(fileName);
+    fileItem.appendChild(removeButton);
+    fileList.appendChild(fileItem);
+  });
+}
+
+function updateFileList(filesArray) {
+  const input = document.getElementById("file-upload");
+  const fileList = document.getElementById("file-list");
+  const dataTransfer = new DataTransfer();
+
+  filesArray.forEach((file) => {
+    dataTransfer.items.add(file);
+  });
+
+  input.files = dataTransfer.files;
+  fileList.innerHTML = "";
+
+  filesArray.forEach((file, index) => {
+    const fileItem = document.createElement("div");
+    fileItem.className = "file-item";
+
+    const fileName = document.createElement("p");
+    fileName.textContent = file.name;
+
+    const removeButton = document.createElement("button");
+    removeButton.className = "remove-btn";
+    removeButton.textContent = "❌";
+    removeButton.onclick = function () {
+      filesArray.splice(index, 1);
+      updateFileList(filesArray);
+    };
+
+    fileItem.appendChild(fileName);
+    fileItem.appendChild(removeButton);
+    fileList.appendChild(fileItem);
+  });
 }

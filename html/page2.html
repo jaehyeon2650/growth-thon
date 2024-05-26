@@ -17,11 +17,14 @@
           id="file-upload"
           class="file-input"
           multiple
-          onchange="displayFileNames()"
+          accept="image/*"
         />
-        <label for="file-upload" class="file-input-label"
-          >영수증 관련 사진들을 첨부하세요.</label
-        >
+        <label for="file-upload" class="file-input-label">
+          <div class="upload-box">
+            <span class="upload-icon">📁</span>
+            <span>upload file</span>
+          </div>
+        </label>
         <div id="file-list" class="file-list"></div>
       </div>
       <div class="checkbox-container">
